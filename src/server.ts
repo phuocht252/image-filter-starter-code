@@ -23,7 +23,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
             var filteredPath = await filterImageFromURL(image_url);
             res.status(200).sendFile(filteredPath);
             res.on("finish", async () => {
-                // await deleteLocalFiles([filteredPath]);
+                await deleteLocalFiles([filteredPath]);
             });
         } catch (e) {
             res.status(500).send({message: e.toString()});
